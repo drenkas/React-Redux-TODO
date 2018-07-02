@@ -13,12 +13,12 @@ const postEditing = (state = {}, action) => {
 const posts = (state = [], action) => {
 	switch (action.type) {
 		case POST_ADD:
-			console.log('REDUCER_ADD spread', 
+			/* console.log('REDUCER_ADD spread', 
 				...action.payload
 			);
 			console.log('REDUCER_ADD non-spread', 
 				action.payload
-			);
+			); */
 			if (Array.isArray(action.payload)) {
 				return [...state, ...action.payload]
 			}
