@@ -77,7 +77,6 @@ export const postDelete = (id) => {
 }
 
 export const postEdit = (text, post) => {
-	console.error("HERE")
 	console.log(post)
 	console.log('DOROVA EDIT')
 	

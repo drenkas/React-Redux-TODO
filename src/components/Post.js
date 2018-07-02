@@ -10,6 +10,7 @@ class Post extends Component {
 
 		this.edit = this.edit.bind(this);
 		this.stopEdit = this.stopEdit.bind(this);
+		this.delete = this.delete.bind(this);
 	}
 
 	edit() {
@@ -18,6 +19,10 @@ class Post extends Component {
 
 	stopEdit() {
 		this.setState({editing: false});
+	}
+
+	delete() {
+		this.props.postDelete(this.props.id);
 	}
 
 	renderTitleInput(text) {
@@ -69,7 +74,7 @@ class Post extends Component {
 				<Row className="justify-content-between">
 					{editing ? this.renderTitleInput(text) : this.renderLable(text)}
 					<Button bsStyle="warning" style={{display: !editing ? 'inline' : 'none'}} onClick={this.edit}>Edit</Button>
-					<Button bsStyle="danger" style={{display: !editing ? 'inline' : 'none'}} onClick={this.props.postDelete}>Delete</Button>
+					<Button bsStyle="danger" style={{display: !editing ? 'inline' : 'none'}} onClick={this.delete}>Delete</Button>
 				</Row>
 			</ListGroupItem>
 		)

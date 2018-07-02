@@ -4,13 +4,13 @@ import "bootstrap/dist/css/bootstrap.css";
 import { ListGroup } from "react-bootstrap";
 
 class PostList extends React.Component {
-	componentWillMount() {
+	/* componentWillMount() {
 		const posts = this.props.loadPost();
 		console.log('PROMISE', posts)
-	}
+	} */
 	render() {
 		const { posts, postDelete, postEdit } = this.props;
-		console.log('POSTLIST PROOPS', this.props);
+		console.error('POSTLIST PROOPS', this.props);
 		return (
 			<ListGroup>
 				{posts.map(post => 

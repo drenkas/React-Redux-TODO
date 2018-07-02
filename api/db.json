@@ -1,29 +1,19 @@
 {
   "posts": [
     {
-      "text": "Дарова, братішка",
+      "text": "Дарова, братішкін",
       "completed": false,
-      "id": 14
+      "id": 1
     },
     {
-      "text": "ййцййц",
+      "text": "Яйца",
       "completed": false,
-      "id": 15
+      "id": 3
     },
     {
-      "text": "qw",
+      "text": "Молоко",
       "completed": false,
-      "id": 16
-    },
-    {
-      "text": "wqasd",
-      "completed": false,
-      "id": 17
-    },
-    {
-      "text": "qweqw",
-      "completed": false,
-      "id": 18
+      "id": 4
     }
   ]
 }
