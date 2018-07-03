@@ -10,9 +10,7 @@ import thunk from 'redux-thunk'
 
 const enhancers = [thunk, logger]
 
-const store = createStore(allReducers, {
-	posts: []
-} , composeWithDevTools(
+const store = createStore(allReducers , composeWithDevTools(
  applyMiddleware(
 	...enhancers
   )));
