@@ -29,7 +29,7 @@ const posts = (state = [], action) => {
 				...state,
 				action.payload
 			]
-		case POST_DELETE:
+		case POST_DELETE: //hello brada
 			console.log('REDUCER_DELETE non-spread', 
 				action.payload, 'STATE', state
 			);
