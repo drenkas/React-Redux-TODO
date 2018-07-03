@@ -43,7 +43,7 @@ const posts = (state = [], action) => {
 		default:
 		console.log('REDUCER', state);
 		return state
-	}
+	}// asaf
 	}
 	
 	export default posts
