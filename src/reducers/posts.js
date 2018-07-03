@@ -1,4 +1,7 @@
-import { POST_ADD, POST_DELETE, POST_EDIT} from "../action";
+import { POST_ADD, POST_DELETE, POST_EDIT, POST_PREADD, POST_PREDELETE, POST_PREEDIT, POST_PRELOAD} from "../action";
+import Immutable from 'immutable';
+
+const initialState = [];
 
 const postEditing = (state = {}, action) => {
 	if (state.id !== action.payload){
@@ -10,40 +13,41 @@ const postEditing = (state = {}, action) => {
 	return {...state, text: action.text};
 }
 
-const posts = (state = [], action) => {
+const posts = (state = initialState, action) => {
+	state = Immutable.fromJS(state);
 	switch (action.type) {
 		case POST_ADD:
-			/* console.log('REDUCER_ADD spread', 
-				...action.payload
-			);
-			console.log('REDUCER_ADD non-spread', 
-				action.payload
-			); */
 			if (Array.isArray(action.payload)) {
-				return [...state, ...action.payload]
+				
+				state = state.merge(action.payload)
+				console.log('REDUCER_ADD STATE', state.toJS);
+				return state;
 			}
 			if (!action.payload.id) { 
-				action.payload.id = new Date().getTime(); 
+				
+				action.payload.id = new Date().getTime();
+				console.error('GET_TIME', action.payload.id); 
 			}
-			return [
-				...state,
-				action.payload
-			]
+			return state.push(action.payload);
 		case POST_DELETE:
-			console.log('REDUCER_DELETE non-spread', 
-				action.payload, 'STATE', state
-			);
-			let newState = state.filter(todo => todo.id !== action.payload)
-			console.log('REDUCER_DELETE newState', newState);
-			return [
-				...newState
-			];
+			var found = state.toJS().findIndex(function(value, index, array) {
+				if (value.id === action.payload) {
+				  return index;
+				}
+				return false;
+			});
+			console.log('FOUND', found);
+			return state.delete(found);
+			
 		case POST_EDIT:
-			return state.map(d => postEditing(d, action));
+			let change = state.toJS().map(d => postEditing(d, action));
+			console.log('CHANGE EEEEEEDIT', change);
+			console.log('FINAL CHANGE EEEEEEDIT', state.merge(change))
+			return state.merge(change);
 		default:
 		console.log('REDUCER', state);
 		return state
-	}// asaf
 	}
+}
 	
 	export default posts

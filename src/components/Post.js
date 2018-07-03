@@ -44,7 +44,7 @@ class Post extends Component {
 							}
 							this.stopEdit();
 							console.log("DAROVKI", this.props)
-							this.props.postEdit(input.value, this.props);
+							this.props.postEdit(input.value, this.props.id);
 							input.value = ''
 						}}>
 							<FormGroup controlId="formEditTodo">

@@ -54,7 +54,7 @@ class getVisiblePost extends React.Component {
 
 const visiblePost = (state) => {
 	console.log('POSTS:', state);
-	return state.posts;
+	return state.posts.toJS();
 }
 
 const mapStateToProps = (state) => ({
@@ -65,8 +65,8 @@ const mapDispatchToProps = (dispatch) => ({
 	postDelete: (id) => {
 		dispatch(postDelete(id));
 	},
-	postEdit: (text, post) => {
-		dispatch(postEdit(text, post));
+	postEdit: (text, id) => {
+		dispatch(postEdit(text, id));
 	},
 	loadPost: () => dispatch(loadPost())
 });

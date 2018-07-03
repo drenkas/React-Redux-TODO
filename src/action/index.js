@@ -3,20 +3,27 @@ import axios from "axios";
 export const POST_ADD = 'POST_ADD';
 export const POST_DELETE = 'POST_DELETE';
 export const POST_EDIT = 'POST_EDIT';
+export const POST_PREADD = 'POST_PREADD';
+export const POST_PREDELETE = 'POST_PREDELETE';
+export const POST_PREEDIT = 'POST_PREEDIT';
+export const POST_PRELOAD = 'POST_PRELOAD';
 /* export const POST_TOGGLE = 'POST_TOGGLE'; */
 export const ERROR = 'ERROR';
 
 
 export const loadPost = () => {
 	console.log('DAROVA EBAT');
+	
 	return dispatch => {
+		dispatch({type: POST_PRELOAD});
 		axios.get("http://localhost:4000/posts/")
 		.then(function (response) {
 			console.log('DAROVA' ,response.data);
+			setTimeout(() =>
 			dispatch({
 				type: POST_ADD,
 				payload: response.data
-			});
+			}), 0);
 		})
 		.catch(function (error) {
 			console.log('TUTA DAROVA')
@@ -30,7 +37,9 @@ export const loadPost = () => {
 
 export const postAdd = (text) => {
 	console.log('TEXT_ADD', text);
+	
 	return (dispatch) => {
+		dispatch({type: POST_PREADD});
 		const post = {
 			text,
 			completed: false
@@ -54,8 +63,9 @@ export const postAdd = (text) => {
 };
 
 export const postDelete = (id) => {
-
+	
 	return (dispatch) => {
+		dispatch({type: POST_PREDELETE});
 		axios.delete('http://localhost:4000/posts/'+id)
 		.then(function (response) {
 			console.log('DELETE_ID', id);
@@ -76,13 +86,14 @@ export const postDelete = (id) => {
 	}
 }
 
-export const postEdit = (text, post) => {
-	console.log(post)
+export const postEdit = (text, id) => {
+	console.log(id)
 	console.log('DOROVA EDIT')
 	
 	return (dispatch) => {
+		dispatch({type: POST_PREEDIT});
 		const postEd = {text: text};
-		axios.patch('http://localhost:4000/posts/'+post.id, postEd)
+		axios.patch('http://localhost:4000/posts/'+id, postEd)
 		.then(function (response) {
 			console.log('EDIT_postED', postEd);
 			console.log('EDIT_TEXT', text);
@@ -90,7 +101,7 @@ export const postEdit = (text, post) => {
 			console.log('RESDATA_EDIT', response.data);
 			dispatch({
 				type: POST_EDIT,
-				payload: post.id,
+				payload: id,
 				text: text
 			});
 		})
@@ -106,11 +117,11 @@ export const postEdit = (text, post) => {
 /* export const postToggle = (post) => {
 	return (dispatch) => {
 		const tod = {...post, completed: !post.completed};
-		axios.put("http://localhost:4000/posts/" + post.id, tod)
+		axios.put("http://localhost:4000/posts/" + id, tod)
 		.then(function (response) {
 			dispatch({
 				type: POST_TOGGLE,
-				id: post.id
+				id: id
 			});
 		})
 		.catch(function (error) {

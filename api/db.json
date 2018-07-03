@@ -1,7 +1,7 @@
 {
   "posts": [
     {
-      "text": "Дарова, братішкіна",
+      "text": "Дарова, братішкa",
       "completed": false,
       "id": 1
     },
@@ -21,9 +21,14 @@
       "id": 5
     },
     {
-      "text": "ыаыф",
+      "text": "Leon",
       "completed": false,
-      "id": 6
+      "id": 8
+    },
+    {
+      "text": "Zaebal",
+      "completed": false,
+      "id": 9
     }
   ]
 }

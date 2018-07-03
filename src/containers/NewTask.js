@@ -14,8 +14,6 @@ let NewTask = ({dispatch}) => {{
 			className="justify-content-between"
 			onSubmit={e => {
 				e.preventDefault()
-				console.error("INPUT");
-				console.log("INPUT" , addInput);
 				if (!addInput.value.trim()) {
 					return
 				}
