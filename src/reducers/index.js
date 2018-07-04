@@ -1,9 +1,11 @@
-import {combineReducers} from 'redux';
+import {combineReducers} from 'redux-immutable';
 import posts from './posts'
+import loading from './loading'
 
 
 const allReducers = combineReducers({
-	posts
+	posts,
+	loading
 });
 
 console.log('MORE REDUCERS!!!!!!!!!!!' ,allReducers);

@@ -11,13 +11,13 @@ class WebPage extends Component {
 		<div>
 			<Grid>
 				<Row>
-					<Col xs={4} md={4} sm={4} className='offset-4'>
+					<Col xs={6} md={6} sm={6} className='offset-3'>
 						<NewTask />
 					</Col>
 				</Row>
 				<br/>
 				<Row>
-					<Col xs={4} md={4} sm={4} className='offset-4'>
+					<Col xs={6} md={6} sm={6} className='offset-3'>
 						<VisiblePostList />
 					</Col>
 				</Row>

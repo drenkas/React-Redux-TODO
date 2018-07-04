@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import "bootstrap/dist/css/bootstrap.css";
-import { ListGroupItem, Button, FormGroup, Form, FormControl , Row, Modal} from "react-bootstrap";
+import { ListGroupItem,  FormGroup, Form, FormControl , Row, Modal} from "react-bootstrap";
+
+import Button from 'react-bootstrap-button-loader';
 
 class Post extends Component {
 	constructor() {
@@ -85,7 +87,7 @@ class Post extends Component {
 				<Row className="justify-content-between">
 					{editing ? this.renderModalInput(text) : null}
 						{this.renderLable(text)}
-					<Button bsStyle="warning"  onClick={this.edit}>Edit</Button>
+					<Button loading={this.props.loading} bsStyle="warning"  onClick={this.edit}>Edit</Button>
 					<Button bsStyle="danger"  onClick={this.delete}>Delete</Button>
 				</Row>
 			</ListGroupItem>

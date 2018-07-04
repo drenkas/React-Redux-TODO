@@ -1,34 +1,34 @@
 {
   "posts": [
     {
-      "text": "Дарова, братішкa",
-      "completed": false,
+      "text": "Дарова, братішкa11",
+      "loading": false,
       "id": 1
     },
     {
       "text": "Яйца",
-      "completed": false,
+      "loading": false,
       "id": 3
     },
     {
       "text": "Молоко",
-      "completed": false,
+      "loading": false,
       "id": 4
     },
     {
-      "text": "++5--",
-      "completed": false,
-      "id": 5
-    },
-    {
       "text": "Leon",
-      "completed": false,
+      "loading": false,
       "id": 8
     },
     {
       "text": "Zaebal",
-      "completed": false,
+      "loading": false,
       "id": 9
+    },
+    {
+      "text": "asda",
+      "loading": false,
+      "id": 10
     }
   ]
 }

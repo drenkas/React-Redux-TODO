@@ -1,36 +1,10 @@
-/* import { connect } from "react-redux";
-import { loadPost, postEdit, postDelete} from "../action";
-import PostList from "../components/PostList";
-
-const getVisiblePost = (state) => {
-	console.log('POSTS:', state);
-	return state.posts;
-}
-
-const mapStateToProps = (state) => ({
-	posts: getVisiblePost(state)
-});
-
-const mapDispatchToProps = (dispatch) => ({
-	postDelete: (id) => {
-		dispatch(postDelete(id));
-	},
-	postEdit: (text, post) => {
-		dispatch(postEdit(text, post));
-	},
-	loadPost: () => dispatch(loadPost())
-});
-
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(PostList); */
 import React from 'react';
 import { connect } from "react-redux";
 import { loadPost, postEdit, postDelete} from "../action";
 import Post from '../components/Post';
+import { BarLoader } from 'react-css-loaders';
 
-class getVisiblePost extends React.Component {
+class GetVisiblePost extends React.Component {
 	componentWillMount() {
 		this.props.loadPost();
 	}
@@ -39,7 +13,12 @@ class getVisiblePost extends React.Component {
 		
 		const { posts, postDelete, postEdit } = this.props;
 		console.log('PROPSES SUKAAAA', this.props);
-		return (
+		if (this.props.loading){
+			return (
+				<BarLoader />
+			)
+		}
+		else return (
 			posts.map(post =>
 				<Post
 					key={post.id}
@@ -54,11 +33,12 @@ class getVisiblePost extends React.Component {
 
 const visiblePost = (state) => {
 	console.log('POSTS:', state);
-	return state.posts.toJS();
+	return state.posts;
 }
 
 const mapStateToProps = (state) => ({
-	posts: visiblePost(state)
+	posts: visiblePost(state.toJS()),
+	loading: state.toJS().loading
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -74,4 +54,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(getVisiblePost);
+)(GetVisiblePost);

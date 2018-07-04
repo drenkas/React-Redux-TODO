@@ -1,16 +1,16 @@
-import { POST_ADD, POST_DELETE, POST_EDIT, POST_PREADD, POST_PREDELETE, POST_PREEDIT, POST_PRELOAD} from "../action";
+import { POST_ADD, POST_DELETE, POST_EDIT,  POST_PREEDIT} from "../action";
 import Immutable from 'immutable';
 
 const initialState = [];
 
-const postEditing = (state = {}, action) => {
-	if (state.id !== action.payload){
-		return state
+const postEditing = (post = {}, action) => {
+	if (post.id !== action.payload){
+		return post
 	}
 	console.log('REDUCER_EDIT TEXT', action.text);
-	console.log('REDUCER_EDIT STATE', state);
-	console.log('REDUCER_EDIT upSTATE', {...state, text: action.text});
-	return {...state, text: action.text};
+	console.log('REDUCER_EDIT STATE', post);
+	console.log('REDUCER_EDIT upSTATE', {...post, text: action.text});
+	return {...post, text: action.text, loading: false};
 }
 
 const posts = (state = initialState, action) => {
@@ -38,7 +38,17 @@ const posts = (state = initialState, action) => {
 			});
 			console.log('FOUND', found);
 			return state.delete(found);
-			
+		
+		case POST_PREEDIT:
+		console.log('complete EEEEEEDIT', state);
+			let complete = state.toJS().map(d => {
+				if (d.id !== action.payload){return d}
+				return {...d, loading: true};
+			});
+			console.log('complete EEEEEEDIT', complete);
+			console.log('FINAL complete EEEEEEDIT', state.merge(complete))
+			return state.merge(complete);
+		
 		case POST_EDIT:
 			let change = state.toJS().map(d => postEditing(d, action));
 			console.log('CHANGE EEEEEEDIT', change);
