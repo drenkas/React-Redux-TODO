@@ -13,7 +13,11 @@ class GetVisiblePost extends React.Component {
 		
 		const { posts, postDelete, postEdit } = this.props;
 		console.log('PROPSES SUKAAAA', this.props);
-		if (this.props.loading){
+		if (this.props.error.value)
+		{
+			return <h3> {this.props.error.payload} </h3>
+		}
+		else if (this.props.loading){
 			return (
 				<BarLoader />
 			)
@@ -37,8 +41,9 @@ const visiblePost = (state) => {
 }
 
 const mapStateToProps = (state) => ({
-	posts: visiblePost(state.toJS()),
-	loading: state.toJS().loading
+	posts: visiblePost(state.todos.toJS()),
+	loading: state.todos.toJS().loading.value,
+	error: state.todos.toJS().error.value
 });
 
 const mapDispatchToProps = (dispatch) => ({

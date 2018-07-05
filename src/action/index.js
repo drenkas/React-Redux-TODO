@@ -122,21 +122,3 @@ export const postEdit = (text, id) => {
 		});
 	}
 }
-/* export const postToggle = (post) => {
-	return (dispatch) => {
-		const tod = {...post, completed: !post.completed};
-		axios.put("http://localhost:4000/posts/" + id, tod)
-		.then(function (response) {
-			dispatch({
-				type: POST_TOGGLE,
-				id: id
-			});
-		})
-		.catch(function (error) {
-			dispatch({
-				type: ERROR,
-				payload: error
-			})
-		});
-	}
-}; */
