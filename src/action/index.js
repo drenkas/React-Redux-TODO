@@ -39,7 +39,7 @@ export const postAdd = (text) => {
 	console.log('TEXT_ADD', text);
 	
 	return (dispatch) => {
-		dispatch({type: POST_PRELOAD});
+		/* dispatch({type: POST_PRELOAD}); */
 		const post = {
 			text,
 			loading: false
@@ -48,9 +48,9 @@ export const postAdd = (text) => {
 		axios.post("http://localhost:4000/posts/", post)
 		.then(function (response) {
 			console.log('POSTAAADD', response.data);
-			dispatch({
+			/* dispatch({
 				type: POST_POSTLOAD
-			});
+			}); */
 			dispatch({
 				type: POST_ADD,
 				payload: response.data
@@ -68,15 +68,15 @@ export const postAdd = (text) => {
 export const postDelete = (id) => {
 	
 	return (dispatch) => {
-		dispatch({type: POST_PRELOAD});
+		/* dispatch({type: POST_PRELOAD}); */
 		axios.delete('http://localhost:4000/posts/'+id)
 		.then(function (response) {
 			console.log('DELETE_ID', id);
 			console.log('RES_DELETE', response);
 			console.log('RESDATA_DELETE', response.data);
-			dispatch({
+			/* dispatch({
 				type: POST_POSTLOAD
-			});
+			}); */
 			dispatch({
 				type: POST_DELETE,
 				payload: id

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { loadPost, postEdit, postDelete} from "../action";
 import Post from '../components/Post';
 import { BarLoader } from 'react-css-loaders';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class GetVisiblePost extends React.Component {
 	componentWillMount() {
@@ -10,7 +11,8 @@ class GetVisiblePost extends React.Component {
 	}
 
 	render() {
-		
+		let root = document.getElementsByTagName("body");
+		root[0].style.background = "none";
 		const { posts, postDelete, postEdit } = this.props;
 		console.log('PROPSES SUKAAAA', this.props);
 		if (this.props.error.value)
@@ -23,14 +25,20 @@ class GetVisiblePost extends React.Component {
 			)
 		}
 		else return (
-			posts.map(post =>
-				<Post
-					key={post.id}
-					{...post}
-					postEdit={postEdit}
-					postDelete={postDelete}
-				/>
-			)
+			<ReactCSSTransitionGroup
+				transitionName="fade"
+				transitionEnterTimeout = {300}
+				transitionLeaveTimeout = {300}
+			>
+				{posts.map(post =>
+					<Post
+						key={post.id}
+						{...post}
+						postEdit={postEdit}
+						postDelete={postDelete}
+					/>
+				)}
+			</ReactCSSTransitionGroup>
 		)
 	}
 }

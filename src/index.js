@@ -7,6 +7,7 @@ import allReducers from './reducers';
 import WebPage from './components/WebPage'
 import logger from 'redux-logger';
 import thunk from 'redux-thunk'
+import { BrowserRouter } from 'react-router-dom';
 
 const enhancers = [thunk, logger]
 
@@ -17,8 +18,9 @@ const store = createStore(allReducers , composeWithDevTools(
 
 render(
 	<Provider store={store}>
-		<WebPage />
+		<BrowserRouter>
+			<WebPage/>
+		</BrowserRouter>
 	</Provider>,
 	document.getElementById('root')
-	
 );
