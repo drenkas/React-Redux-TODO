@@ -4,6 +4,7 @@ import { loadPost, postEdit, postDelete} from "../action";
 import Post from '../components/Post';
 import { BarLoader } from 'react-css-loaders';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import Delay from './Delay'
 
 class GetVisiblePost extends React.Component {
 	componentWillMount() {
@@ -21,7 +22,9 @@ class GetVisiblePost extends React.Component {
 		}
 		else if (this.props.loading){
 			return (
-				<BarLoader />
+				<Delay wait={300} >
+					<BarLoader />
+				</Delay> 
 			)
 		}
 		else return (
