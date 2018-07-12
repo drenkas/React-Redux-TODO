@@ -1,25 +1,16 @@
 import React from 'react';
 import {render} from "react-dom";
 import {Provider} from 'react-redux'
-import {createStore, applyMiddleware} from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import allReducers from './reducers';
-import WebPage from './components/WebPage'
-import logger from 'redux-logger';
-import thunk from 'redux-thunk'
+import configureStore from './store/configureStore';
+import App from './components/App';
 import { BrowserRouter } from 'react-router-dom';
 
-const enhancers = [thunk, logger]
-
-const store = createStore(allReducers , composeWithDevTools(
- applyMiddleware(
-	...enhancers
-  )));
+const store = configureStore();
 
 render(
 	<Provider store={store}>
 		<BrowserRouter>
-			<WebPage/>
+			<App/>
 		</BrowserRouter>
 	</Provider>,
 	document.getElementById('root')

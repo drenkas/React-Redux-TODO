@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import NewTask from '../containers/NewTask'
-import Routes from '../components/Routes'
+import Routes from './routes/Routes'
 import "bootstrap/dist/css/bootstrap.css";
 import { Grid, Row, Col, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
-/* import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; */
 
-class WebPage extends Component {
+class App extends Component {
 
 	render () {
 		return (
@@ -37,4 +36,4 @@ class WebPage extends Component {
 	}
 };
 
-export default WebPage;
+export default App;

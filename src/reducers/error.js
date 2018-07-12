@@ -8,7 +8,6 @@ const initialState = {
 
 const error = (state = initialState, action) => {
 	state = Immutable.fromJS(state);
-	console.log('error', state);
 	switch (action.type) {
 		case ERROR:
 			return state.merge({

@@ -5,7 +5,6 @@ const initialState = {value: false};
 
 const loading = (state = initialState, action) => {
 	state = Immutable.fromJS(state);
-	console.log('LOADING', state);
 	switch (action.type) {
 		case POST_PRELOAD:
 			return state.merge({

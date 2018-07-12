@@ -39,38 +39,3 @@ let NewTask = ({dispatch}) => {{
 NewTask = connect()(NewTask);
 
 export default NewTask;
-/* import React from 'react';
-import { postAdd } from '../action';
-import { connect } from 'react-redux'
-
-
-let NewTask = ({dispatch}) => {{
-	let input;
-
-	return (
-		<div>
-			<form onSubmit={e => {
-				e.preventDefault()
-				console.error("INPUT");
-				console.log("INPUT" , input);
-				if (!input.value.trim()) {
-					return
-				}
-				dispatch(postAdd(input.value))
-				input.value = ''
-			}}>
-				<input ref={node => {
-					input = node
-					
-				}}/>
-				<button type="submit">
-					Add Post
-				</button>
-			</form>
-		</div>
-	)
-}}
-
-NewTask = connect()(NewTask);
-
-export default NewTask; */

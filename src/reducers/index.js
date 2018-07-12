@@ -6,6 +6,4 @@ const allReducers = combineReducers({
 	todos
 });
 
-console.log('MORE REDUCERS!!!!!!!!!!!' ,allReducers);
-
 export default allReducers;

@@ -1,10 +1,8 @@
 import React from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-
-
-import VisiblePostList from '../containers/VisiblePostList'
-import About from '../components/About'
+import VisiblePostList from '../../containers/VisiblePostList'
+import About from '../about/About'
 
 function Routes({ location }) {
   return (

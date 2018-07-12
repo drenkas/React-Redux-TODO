@@ -45,7 +45,6 @@ class Post extends Component {
 								return
 							}
 							this.stopEdit();
-							console.log("DAROVKI", this.props)
 							this.props.postEdit(input.value, this.props.id);
 							input.value = ''
 						}}>
@@ -80,8 +79,6 @@ class Post extends Component {
 		const editing = this.state.editing;
 		const text = this.props.text;
 
-		console.log('POST STATE', this.state.editing);
-		console.log('POST PROPS', this.props);
 		return (
 			<ListGroupItem>
 				<Row className="justify-content-between">
