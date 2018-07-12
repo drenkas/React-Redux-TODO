@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import NewTask from '../containers/NewTask'
-import Routes from './routes/Routes'
+import NewTask from './NewTask'
+import Routes from '../components/routes/Routes'
 import "bootstrap/dist/css/bootstrap.css";
 import { Grid, Row, Col, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';

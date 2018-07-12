@@ -13,7 +13,7 @@ export const loadPost = () => {
 	return dispatch => {
 		dispatch({type: POST_PRELOAD});
 		axios.get("http://localhost:4000/posts/")
-		.then(function (response) {
+		.then( (response) => {
 			setTimeout(() =>dispatch({type: POST_POSTLOAD}), 1000);
 			setTimeout(() =>
 			dispatch({
@@ -21,7 +21,7 @@ export const loadPost = () => {
 				payload: response.data
 			}), 1000);
 		})
-		.catch(function (error) {
+		.catch( (error) => {
 			dispatch({
 				type: ERROR,
 				payload: error
@@ -37,13 +37,13 @@ export const postAdd = (text) => {
 			loading: false
 		};
 		axios.post("http://localhost:4000/posts/", post)
-		.then(function (response) {
+		.then( (response) => {
 			dispatch({
 				type: POST_ADD,
 				payload: response.data
 			});
 		})
-		.catch(function (error) {
+		.catch( (error) => {
 			dispatch({
 				type: ERROR,
 				payload: error
@@ -55,13 +55,13 @@ export const postAdd = (text) => {
 export const postDelete = (id) => {
 	return (dispatch) => {
 		axios.delete('http://localhost:4000/posts/'+id)
-		.then(function (response) {
+		.then( (response) => {
 			dispatch({
 				type: POST_DELETE,
 				payload: id
 			});
 		})
-		.catch(function (error) {
+		.catch( (error) => {
 			dispatch({
 				type: ERROR,
 				payload: error
@@ -76,7 +76,7 @@ export const postEdit = (text, id) => {
 					payload: id});
 		const postEd = {text: text};
 		axios.patch('http://localhost:4000/posts/'+id, postEd)
-		.then(function (response) {
+		.then( (response) => {
 			setTimeout(() =>
 			dispatch({
 				type: POST_EDIT,
@@ -84,7 +84,7 @@ export const postEdit = (text, id) => {
 				text: text
 			}), 2000);
 		})
-		.catch(function (error) {
+		.catch( (error) => {
 			dispatch({
 				type: ERROR,
 				payload: error
