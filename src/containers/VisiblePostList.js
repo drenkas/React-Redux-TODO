@@ -7,7 +7,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Delay from '../components/Delay'
 
 class GetVisiblePost extends React.Component {
-	componentWillMount() {
+	componentDidMount() {
 		this.props.loadPost();
 	}
 
