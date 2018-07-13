@@ -3,23 +3,11 @@ import {  FormGroup, Form, FormControl , Modal} from "react-bootstrap";
 import Button from 'react-bootstrap-button-loader';
 
 class ModalInput extends Component {
-	constructor() {
-		super(...arguments);
 
-		this.state = {editing: false};
-	}
 
-	edit = () => {
-		this.setState({editing: true});
-	}
-
-	stopEdit = () => {
-		this.setState({editing: false});
-	}
-
-	renderModalInput(text) {
+	render() {
 		let input;
-
+		const text = this.props.text;
 		return (
 			<div className="static-modal">
 				<Modal.Dialog>
@@ -34,7 +22,7 @@ class ModalInput extends Component {
 							if (!input.value.trim()) {
 								return
 							}
-							this.stopEdit();
+							this.props.modalChange();
 							this.props.postEdit(input.value, this.props.id);
 						}}>
 							<FormGroup controlId="formEditTodo">
@@ -49,20 +37,9 @@ class ModalInput extends Component {
 						</Form>
 					</Modal.Body>
 					<Modal.Footer>
-						<Button bsStyle="danger" onClick={this.stopEdit}>Close</Button>
+						<Button bsStyle="danger" onClick={this.props.modalChange}>Close</Button>
 					</Modal.Footer>
 				</Modal.Dialog>
-			</div>
-		);
-	}
-
-	render() {
-		const editing = this.state.editing;
-		const text = this.props.text;
-		return (
-			<div>
-				{editing ? this.renderModalInput(text) : null}
-				<Button loading={this.props.loading} bsStyle="warning"  onClick={this.edit}>Edit</Button>
 			</div>
 		);
 	}
