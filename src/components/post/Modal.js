@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
-import { ListGroupItem,   Row} from "react-bootstrap";
+import {  FormGroup, Form, FormControl , Modal} from "react-bootstrap";
 import Button from 'react-bootstrap-button-loader';
-import ModalInput from './Modal'
 
-class Post extends Component {
-	/* constructor() {
+class ModalInput extends Component {
+	constructor() {
 		super(...arguments);
 
 		this.state = {editing: false};
@@ -16,13 +15,9 @@ class Post extends Component {
 
 	stopEdit = () => {
 		this.setState({editing: false});
-	} */
-
-	delete = () => {
-		this.props.postDelete(this.props.id);
 	}
 
-	/* renderModalInput(text) {
+	renderModalInput(text) {
 		let input;
 
 		return (
@@ -41,7 +36,6 @@ class Post extends Component {
 							}
 							this.stopEdit();
 							this.props.postEdit(input.value, this.props.id);
-							input.value = ''
 						}}>
 							<FormGroup controlId="formEditTodo">
 								<FormControl defaultValue={text}
@@ -60,29 +54,18 @@ class Post extends Component {
 				</Modal.Dialog>
 			</div>
 		);
-	  } */
-
-	renderLable(text) {
-		return (
-			<div style={{width: "60%"}}>
-				{text}
-			</div>
-		);
 	}
 
 	render() {
+		const editing = this.state.editing;
 		const text = this.props.text;
-
 		return (
-			<ListGroupItem>
-				<Row className="justify-content-between">
-					{this.renderLable(text)}
-					<ModalInput {...this.props}/>
-					<Button bsStyle="danger"  onClick={this.delete}>Delete</Button>
-				</Row>
-			</ListGroupItem>
-		)
+			<div>
+				{editing ? this.renderModalInput(text) : null}
+				<Button loading={this.props.loading} bsStyle="warning"  onClick={this.edit}>Edit</Button>
+			</div>
+		);
 	}
 }
 
-export default Post;
+export default ModalInput;

@@ -4,7 +4,7 @@ import { loadPost, postEdit, postDelete} from "../action";
 import Post from '../components/post/Post';
 import { BarLoader } from 'react-css-loaders';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import Delay from './Delay'
+import Delay from '../components/Delay'
 
 class GetVisiblePost extends React.Component {
 	componentWillMount() {
@@ -13,13 +13,14 @@ class GetVisiblePost extends React.Component {
 
 	render() {
 		const { posts, postDelete, postEdit } = this.props;
+		const timeDelay = 300;
 		if (this.props.error.value)
 		{
 			return <h3> {this.props.error.payload} </h3>
 		}
 		else if (this.props.loading){
 			return (
-				<Delay wait={300} >
+				<Delay wait={timeDelay} >
 					<BarLoader />
 				</Delay> 
 			)
@@ -43,12 +44,9 @@ class GetVisiblePost extends React.Component {
 	}
 }
 
-const visiblePost = (state) => {
-	return state.posts;
-}
 
 const mapStateToProps = (state) => ({
-	posts: visiblePost(state.todos.toJS()),
+	posts: state.todos.toJS().posts,
 	loading: state.todos.toJS().loading.value,
 	error: state.todos.toJS().error.value
 });

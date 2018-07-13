@@ -10,6 +10,9 @@ or
 ```
 yarn install
 ```
+```
+npm install -g json-server
+```
 
 ## Start
 
