@@ -1,41 +1,40 @@
 import React from 'react';
 import { postAdd } from '../action';
 import { connect } from 'react-redux'
-import "bootstrap/dist/css/bootstrap.css";
 import { Button, FormGroup, Form, FormControl} from "react-bootstrap";
 
+class NewTask extends React.Component{
 
-let NewTask = ({dispatch}) => {{
-	let addInput;
+	handleSubmit = (e) => {
+		e.preventDefault();
+		if (!this.input.value.trim()) {
+			return
+		}
+		this.props.dispatch(postAdd(this.input.value))
+		this.input.value = ''
+	}
 
-	return (
-		<div>
-			<Form inline 
-			className="justify-content-between"
-			onSubmit={e => {
-				e.preventDefault()
-				if (!addInput.value.trim()) {
-					return
-				}
-				dispatch(postAdd(addInput.value))
-				addInput.value = ''
-			}}>
-				<FormGroup>
-					<FormControl
-					maxLength="20"
-					type="text"
-					placeholder="Enter a task" inputRef={node => {
-						addInput = node
-					}}/>
-				</FormGroup>
-				<Button type="submit">
-						Add Post
-				</Button>
-			</Form>
-		</div>
-	)
-}}
+	render() {
+		return (
+			<div>
+				<Form inline 
+				className="justify-content-between"
+				onSubmit={this.handleSubmit}>
+					<FormGroup>
+						<FormControl
+						maxLength="20"
+						type="text"
+						placeholder="Enter a task" inputRef={node => {
+							this.input = node
+						}}/>
+					</FormGroup>
+					<Button type="submit">
+							Add Post
+					</Button>
+				</Form>
+			</div>
+		)
+	}
+}
 
-NewTask = connect()(NewTask);
-
-export default NewTask;
+export default connect()(NewTask);

@@ -22,7 +22,6 @@ class Post extends Component {
 
 	render() {
 		const text = this.props.text;
-		console.log("props", this.props);
 		return (
 			<ListGroupItem>
 				<Row className="justify-content-between">

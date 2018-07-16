@@ -3,6 +3,7 @@ import NewTask from './NewTask'
 import Routes from '../components/routes/Routes'
 import { Grid, Row, Col, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.css";
 
 class App extends Component {
 

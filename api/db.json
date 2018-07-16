@@ -1,7 +1,7 @@
 {
   "posts": [
     {
-      "text": "Дарова, братішкa1",
+      "text": "Дарова, братішкa",
       "loading": false,
       "id": 1
     },
@@ -16,14 +16,19 @@
       "id": 4
     },
     {
-      "text": "xxx",
+      "text": "2r23r",
       "loading": false,
       "id": 5
     },
     {
-      "text": "asdasd",
+      "text": "asd",
       "loading": false,
       "id": 6
+    },
+    {
+      "text": "asdas",
+      "loading": false,
+      "id": 7
     }
   ]
 }

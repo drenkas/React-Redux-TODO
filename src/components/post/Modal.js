@@ -4,9 +4,16 @@ import Button from 'react-bootstrap-button-loader';
 
 class ModalInput extends Component {
 
+	handleSubmit = (e) => {
+		e.preventDefault();
+		if (!this.inputNode.value.trim()) {
+			return
+		}
+		this.props.modalChange();
+		this.props.postEdit(this.inputNode.value, this.props.id);
+	}
 
 	render() {
-		let input;
 		const text = this.props.text;
 		return (
 			<div className="static-modal">
@@ -17,20 +24,13 @@ class ModalInput extends Component {
 					<Modal.Body>
 						<Form inline 
 						className="justify-content-between"
-						onSubmit={e => {
-							e.preventDefault()
-							if (!input.value.trim()) {
-								return
-							}
-							this.props.modalChange();
-							this.props.postEdit(input.value, this.props.id);
-						}}>
+						onSubmit={this.handleSubmit}>
 							<FormGroup controlId="formEditTodo">
 								<FormControl defaultValue={text}
 									maxLength="20"
 									type="text"
 									inputRef={node => {
-									input = node
+										this.inputNode = node
 								}}/>
 							</FormGroup>
 							<Button bsStyle="success" type="submit">Done</Button>

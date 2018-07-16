@@ -35,7 +35,6 @@ class GetVisiblePost extends React.Component {
 	render() {
 		const { posts, postDelete, postEdit } = this.props;
 		const timeDelay = 300;
-		console.log("STATE", this.state);
 		if (this.props.error.value)
 		{
 			return <h3> {this.props.error.payload} </h3>
