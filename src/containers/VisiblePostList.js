@@ -17,7 +17,9 @@ class GetVisiblePost extends React.Component {
 		};
 	}
 
-	
+	componentDidMount() {
+		this.props.loadPost();
+	}
 
 	modalChange = () => {
 		this.setState({ showModal: !this.state.showModal})
@@ -26,10 +28,6 @@ class GetVisiblePost extends React.Component {
 	onSavePost = (index) => {
 		this.modalChange();
 		this.setState({ editableIndex: index})
-	}
-
-	componentDidMount() {
-		this.props.loadPost();
 	}
 
 	render() {

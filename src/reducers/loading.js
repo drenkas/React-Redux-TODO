@@ -1,4 +1,4 @@
-import { POST_PRELOAD , POST_POSTLOAD} from "../action";
+import { POST_PRELOAD , POST_POSTLOAD} from "../utils/types";
 import Immutable from 'immutable';
 
 const initialState = {value: false};

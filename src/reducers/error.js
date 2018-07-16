@@ -1,4 +1,4 @@
-import { ERROR } from "../action";
+import { ERROR } from "../utils/types";
 import Immutable from 'immutable';
 
 const initialState = {

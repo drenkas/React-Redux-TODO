@@ -1,4 +1,4 @@
-import { POST_ADD, POST_DELETE, POST_EDIT,  POST_PREEDIT} from "../action";
+import { POST_ADD, POST_DELETE, POST_EDIT,  POST_PREEDIT} from "../utils/types";
 import Immutable from 'immutable';
 
 const initialState = [];
