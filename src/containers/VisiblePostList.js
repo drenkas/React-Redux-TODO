@@ -7,6 +7,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Delay from '../components/Delay'
 import ModalInput from '../components/post/Modal'
 
+const TIME_DELAY = 300;
+
 class GetVisiblePost extends React.Component {
 	constructor() {
 		super(...arguments);
@@ -32,7 +34,7 @@ class GetVisiblePost extends React.Component {
 
 	render() {
 		const { posts, postDelete, postEdit } = this.props;
-		const timeDelay = 300;
+		
 		if (this.props.error.value)
 		{
 			return <h3> {`Error: ${this.props.error.message.message}. 
@@ -40,7 +42,7 @@ class GetVisiblePost extends React.Component {
 		}
 		else if (this.props.loading){
 			return (
-				<Delay wait={timeDelay} >
+				<Delay wait={TIME_DELAY} >
 					<BarLoader />
 				</Delay> 
 			)
