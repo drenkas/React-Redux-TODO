@@ -25,7 +25,7 @@ const posts = (state = initialState, action) => {
 		case POST_DELETE:
 			var found = state.toJS().findIndex((value, index, array) => {
 				if (value.id === action.payload) {
-					return index;
+					return true;
 				}
 				return false;
 			});

@@ -76,7 +76,7 @@ export const postEdit = (text, id) => {
 				type: POST_EDIT,
 				payload: id,
 				text: text
-			}), 2000);
+			}), 1000);
 		})
 		.catch( (error) => {
 			dispatch({

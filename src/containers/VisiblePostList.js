@@ -35,7 +35,8 @@ class GetVisiblePost extends React.Component {
 		const timeDelay = 300;
 		if (this.props.error.value)
 		{
-			return <h3> {this.props.error.payload} </h3>
+			return <h3> {`Error: ${this.props.error.message.message}. 
+			Method: ${this.props.error.message.config.method}. Url: ${this.props.error.message.config.url}`}</h3>
 		}
 		else if (this.props.loading){
 			return (
@@ -77,7 +78,7 @@ class GetVisiblePost extends React.Component {
 const mapStateToProps = (state) => ({
 	posts: state.todos.toJS().posts,
 	loading: state.todos.toJS().loading.value,
-	error: state.todos.toJS().error.value
+	error: state.todos.toJS().error
 });
 
 const mapDispatchToProps = (dispatch) => ({

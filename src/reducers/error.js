@@ -3,7 +3,7 @@ import Immutable from 'immutable';
 
 const initialState = {
 	value: false,
-	message: ""
+	message: {}
 };
 
 const error = (state = initialState, action) => {
