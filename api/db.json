@@ -1,24 +1,28 @@
 {
   "posts": [
     {
-      "text": "фіафіапапав",
+      "text": "asdasd",
       "loading": false,
+      "isFetching": false,
+      "id": 1
+    },
+    {
+      "text": "asdasd",
+      "loading": false,
+      "isFetching": false,
+      "id": 2
+    },
+    {
+      "text": "sadasda",
+      "loading": false,
+      "isFetching": false,
       "id": 3
-    },
-    {
-      "text": "вввв",
-      "loading": false,
-      "id": 5
-    },
-    {
-      "text": "asdsa",
-      "loading": false,
-      "id": 8
     },
     {
       "text": "asdas",
       "loading": false,
-      "id": 9
+      "isFetching": false,
+      "id": 4
     }
   ]
 }

@@ -21,13 +21,12 @@ class Post extends Component {
 	}
 
 	render() {
-		const text = this.props.text;
 		return (
 			<ListGroupItem>
 				<Row className="justify-content-between">
-					{this.renderLable(text)}
-					<Button loading={this.props.loading} bsStyle="warning"  onClick={this.onSavePost}>Edit</Button>
-					<Button bsStyle="danger"  onClick={this.delete}>Delete</Button>
+					{this.renderLable(this.props.text)}
+					<Button loading={this.props.loading} bsStyle="warning" disabled={this.props.isFetching} onClick={this.onSavePost}>Edit</Button>
+					<Button bsStyle="danger"  onClick={this.delete} disabled={this.props.isFetching}>Delete</Button>
 				</Row>
 			</ListGroupItem>
 		)

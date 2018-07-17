@@ -34,13 +34,12 @@ class GetVisiblePost extends React.Component {
 
 	render() {
 		const { posts, postDelete, postEdit } = this.props;
-		
 		if (this.props.error.value)
 		{
 			return <h3> {`Error: ${this.props.error.message.message}. 
 			Method: ${this.props.error.message.config.method}. Url: ${this.props.error.message.config.url}`}</h3>
 		}
-		else if (this.props.loading){
+		else if (this.props.loading.value){
 			return (
 				<Delay wait={TIME_DELAY} >
 					<BarLoader />
@@ -79,7 +78,7 @@ class GetVisiblePost extends React.Component {
 
 const mapStateToProps = (state) => ({
 	posts: state.todos.toJS().posts,
-	loading: state.todos.toJS().loading.value,
+	loading: state.todos.toJS().loading,
 	error: state.todos.toJS().error
 });
 

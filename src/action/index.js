@@ -1,5 +1,5 @@
 import axios from "axios";
-import { POST_ADD, POST_DELETE, POST_EDIT,  POST_PREEDIT, POST_PRELOAD, POST_POSTLOAD, ERROR} from "../utils/types";
+import { POST_FETCH, POST_ADD, POST_DELETE, POST_EDIT,  POST_PREEDIT, POST_PRELOAD, POST_POSTLOAD, ERROR} from "../utils/types";
 
 
 
@@ -28,14 +28,17 @@ export const postAdd = (text) => {
 	return (dispatch) => {
 		const post = {
 			text,
-			loading: false
+			loading: false,
+			isFetching: false
 		};
 		axios.post("http://localhost:4000/posts/", post)
 		.then( (response) => {
+
 			dispatch({
 				type: POST_ADD,
 				payload: response.data
 			});
+			dispatch({type: POST_POSTLOAD});
 		})
 		.catch( (error) => {
 			dispatch({
@@ -48,12 +51,15 @@ export const postAdd = (text) => {
 
 export const postDelete = (id) => {
 	return (dispatch) => {
+		dispatch({type: POST_FETCH, id: id});
 		axios.delete('http://localhost:4000/posts/'+id)
 		.then( (response) => {
+			
 			dispatch({
 				type: POST_DELETE,
 				payload: id
 			});
+			dispatch({type: POST_POSTLOAD});
 		})
 		.catch( (error) => {
 			dispatch({
@@ -67,7 +73,7 @@ export const postDelete = (id) => {
 export const postEdit = (text, id) => {
 	return (dispatch) => {
 		dispatch({type: POST_PREEDIT,
-					payload: id});
+					id: id});
 		const postEd = {text: text};
 		axios.patch('http://localhost:4000/posts/'+id, postEd)
 		.then( (response) => {
