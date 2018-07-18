@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { loadPost, postEdit, postDelete} from "../action";
+import { loadPost, postEdit, postDelete, clearPosts} from "../action";
 import Post from '../components/post/Post';
 import { BarLoader } from 'react-css-loaders';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -21,6 +21,10 @@ class GetVisiblePost extends React.Component {
 
 	componentDidMount() {
 		this.props.loadPost();
+	}
+	
+	componentWillUnmount() {
+		this.props.clearPosts();
 	}
 
 	modalChange = () => {
@@ -48,13 +52,13 @@ class GetVisiblePost extends React.Component {
 		}
 		else return (
 			<div>
-				{this.state.showModal ?
-				<ModalInput 
+				{this.state.showModal &&
+				<ModalInput
 					modalChange={this.modalChange}
 					postEdit={postEdit}
 					text={posts[this.state.editableIndex].text}
 					id={posts[this.state.editableIndex].id}
-				/> : null}
+				/> }
 				<ReactCSSTransitionGroup
 					transitionName="fade"
 					transitionEnterTimeout = {300}
@@ -77,9 +81,9 @@ class GetVisiblePost extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-	posts: state.todos.toJS().posts,
-	loading: state.todos.toJS().loading,
-	error: state.todos.toJS().error
+	posts: state.todos.get("posts").toJS(),
+	loading: state.todos.get("loading").toJS(),
+	error: state.todos.get("error").toJS()
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -89,7 +93,8 @@ const mapDispatchToProps = (dispatch) => ({
 	postEdit: (text, id) => {
 		dispatch(postEdit(text, id));
 	},
-	loadPost: () => dispatch(loadPost())
+	loadPost: () => dispatch(loadPost()),
+	clearPosts: () => dispatch(clearPosts())
 });
 
 export default connect(

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { POST_FETCH, POST_ADD, POST_DELETE, POST_EDIT,  POST_PREEDIT, POST_PRELOAD, POST_POSTLOAD, ERROR} from "../utils/types";
+import { POST_FETCH, POST_CLEAR, POST_ADD, POST_DELETE, POST_EDIT,  POST_PREEDIT, POST_PRELOAD, POST_POSTLOAD, ERROR} from "../utils/types";
 
 
 
@@ -27,9 +27,7 @@ export const loadPost = () => {
 export const postAdd = (text) => {
 	return (dispatch) => {
 		const post = {
-			text,
-			loading: false,
-			isFetching: false
+			text
 		};
 		axios.post("http://localhost:4000/posts/", post)
 		.then( (response) => {
@@ -92,3 +90,7 @@ export const postEdit = (text, id) => {
 		});
 	}
 }
+
+export const clearPosts = () => ({
+	type: POST_CLEAR
+});

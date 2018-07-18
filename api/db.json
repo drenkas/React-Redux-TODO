@@ -2,21 +2,19 @@
   "posts": [
     {
       "text": "333",
-      "loading": false,
-      "isFetching": false,
       "id": 8
     },
     {
-      "text": "4444",
-      "loading": false,
-      "isFetching": false,
-      "id": 9
+      "text": "фівфів3as",
+      "id": 10
     },
     {
-      "text": "555",
-      "loading": false,
-      "isFetching": false,
-      "id": 10
+      "text": "sdaa",
+      "id": 12
+    },
+    {
+      "text": "asdas",
+      "id": 13
     }
   ]
 }

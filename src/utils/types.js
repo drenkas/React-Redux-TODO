@@ -5,4 +5,5 @@ export const POST_PREEDIT = 'POST_PREEDIT';
 export const POST_FETCH = 'POST_FETCH';
 export const POST_PRELOAD = 'POST_PRELOAD';
 export const POST_POSTLOAD = 'POST_POSTLOAD';
+export const POST_CLEAR = 'POST_CLEAR';
 export const ERROR = 'ERROR';
