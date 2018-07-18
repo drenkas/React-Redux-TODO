@@ -1,28 +1,22 @@
 {
   "posts": [
     {
-      "text": "asdasd",
+      "text": "333",
       "loading": false,
       "isFetching": false,
-      "id": 1
+      "id": 8
     },
     {
-      "text": "asdasd",
+      "text": "4444",
       "loading": false,
       "isFetching": false,
-      "id": 2
+      "id": 9
     },
     {
-      "text": "sadasda",
+      "text": "555",
       "loading": false,
       "isFetching": false,
-      "id": 3
-    },
-    {
-      "text": "asdas",
-      "loading": false,
-      "isFetching": false,
-      "id": 4
+      "id": 10
     }
   ]
 }

@@ -1,13 +1,12 @@
 import { ERROR } from "../utils/types";
-import Immutable from 'immutable';
+import { Map } from 'immutable';
 
-const initialState = {
+const initialState = Map({
 	value: false,
 	message: {}
-};
+});
 
 const error = (state = initialState, action) => {
-	state = Immutable.fromJS(state);
 	switch (action.type) {
 		case ERROR:
 			return state.merge({

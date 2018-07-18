@@ -1,17 +1,16 @@
 import { POST_FETCH, POST_ADD, POST_DELETE, POST_EDIT,  POST_PREEDIT} from "../utils/types";
-import Immutable from 'immutable';
+import {List, Map} from 'immutable';
 
-const initialState = [];
+const initialState = List([]);
 
-const postEditing = (post = {}, action) => {
-	if (post.id !== action.payload){
+const postEditing = (post, action) => {
+	if (post.get("id") !== action.payload){
 		return post
 	}
-	return {...post, text: action.text, loading: false, isFetching: false};
+	return post.merge(Map({text: action.text, loading: false, isFetching: false}));
 }
 
 const posts = (state = initialState, action) => {
-	state = Immutable.fromJS(state);
 	switch (action.type) {
 		case POST_ADD:
 			if (Array.isArray(action.payload)) {
@@ -23,8 +22,8 @@ const posts = (state = initialState, action) => {
 			}
 			return state.push(action.payload);
 		case POST_DELETE:
-			var found = state.toJS().findIndex((value, index, array) => {
-				if (value.id === action.payload) {
+			var found = state.findIndex((value, index, array) => {
+				if (value.get('id') === action.payload) {
 					return true;
 				}
 				return false;
@@ -32,19 +31,19 @@ const posts = (state = initialState, action) => {
 			return state.delete(found);
 		
 		case POST_PREEDIT:
-			let complete = state.toJS().map(d => {
-				if (d.id !== action.id){return d}
-				return {...d, loading: true, isFetching: true};
+			let complete = state.map(d => {
+				if (d.get("id") !== action.id){return d};
+				return d.merge(Map({loading: true, isFetching: true}));
 			});
 			return state.merge(complete);
 		
 		case POST_EDIT:
-			let change = state.toJS().map(d => postEditing(d, action));
+			let change = state.map(d => postEditing(d, action));
 			return state.merge(change);
 		case POST_FETCH:
-			let isFetch = state.toJS().map(d => {
-				if (d.id !== action.id){return d}
-				return {...d,  isFetching: true};
+			let isFetch = state.map(d => {
+				if (d.get('id') !== action.id){return d}
+				return d.merge(Map({isFetching: true}));
 			});
 			return state.merge(isFetch);
 		default:
