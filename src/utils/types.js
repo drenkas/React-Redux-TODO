@@ -1,9 +1,19 @@
-export const POST_ADD = 'POST_ADD';
-export const POST_DELETE = 'POST_DELETE';
-export const POST_EDIT = 'POST_EDIT';
-export const POST_PREEDIT = 'POST_PREEDIT';
-export const POST_FETCH = 'POST_FETCH';
-export const POST_PRELOAD = 'POST_PRELOAD';
-export const POST_POSTLOAD = 'POST_POSTLOAD';
+export const REQUEST_GET_LOAD = 'REQUEST_GET_LOAD';
+export const SUCCESS_GET_LOAD = 'SUCCESS_GET_LOAD';
+export const FAILURE_GET_LOAD = 'FAILURE_GET_LOAD';
+
+export const REQUEST_POST_ADD = 'REQUEST_POST_ADD';
+export const SUCCESS_POST_ADD = 'SUCCESS_POST_ADD';
+export const FAILURE_POST_ADD = 'FAILURE_POST_ADD';
+
+export const REQUEST_DELETE = 'REQUEST_DELETE';
+export const SUCCESS_DELETE = 'SUCCESS_DELETE';
+export const FAILURE_DELETE = 'FAILURE_DELETE';
+
+export const REQUEST_PATCH_EDIT = 'REQUEST_PATCH_EDIT';
+export const SUCCESS_PATCH_EDIT = 'SUCCESS_PATCH_EDIT';
+export const FAILURE_PATCH_EDIT = 'FAILURE_PATCH_EDIT';
+
 export const POST_CLEAR = 'POST_CLEAR';
+
 export const ERROR = 'ERROR';

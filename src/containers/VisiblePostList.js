@@ -37,7 +37,6 @@ class GetVisiblePost extends React.Component {
 	}
 
 	render() {
-		const { posts, postDelete, postEdit } = this.props;
 		if (this.props.error.value)
 		{
 			return <h3> {`Error: ${this.props.error.message.message}. 
@@ -55,21 +54,21 @@ class GetVisiblePost extends React.Component {
 				{this.state.showModal &&
 				<ModalInput
 					modalChange={this.modalChange}
-					postEdit={postEdit}
-					text={posts[this.state.editableIndex].text}
-					id={posts[this.state.editableIndex].id}
+					postEdit={this.props.postEdit}
+					text={this.props.posts[this.state.editableIndex].text}
+					id={this.props.posts[this.state.editableIndex].id}
 				/> }
 				<ReactCSSTransitionGroup
 					transitionName="fade"
 					transitionEnterTimeout = {300}
 					transitionLeaveTimeout = {300}
 				>
-					{posts.map((post, index) =>
+					{this.props.posts.map((post, index) =>
 						<Post
 							key={post.id}
 							{...post}
 							index={index}
-							postDelete={postDelete}
+							postDelete={this.props.postDelete}
 							onSavePost={this.onSavePost}
 						/>
 					)}

@@ -5,19 +5,18 @@ import { POST_FETCH, POST_CLEAR, POST_ADD, POST_DELETE, POST_EDIT,  POST_PREEDIT
 
 export const loadPost = () => {
 	return dispatch => {
-		dispatch({type: POST_PRELOAD});
+		dispatch({type: REQUEST_GET_LOAD});
 		axios.get("http://localhost:4000/posts/")
 		.then( (response) => {
-			setTimeout(() =>dispatch({type: POST_POSTLOAD}), 1000);
 			setTimeout(() =>
 			dispatch({
-				type: POST_ADD,
+				type: SUCCESS_GET_LOAD,
 				payload: response.data
 			}), 1000);
 		})
 		.catch( (error) => {
 			dispatch({
-				type: ERROR,
+				type: FAILURE_GET_LOAD,
 				payload: error
 			});
 		});
