@@ -6,10 +6,34 @@ import { BarLoader } from 'react-css-loaders';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Delay from '../components/Delay'
 import ModalInput from '../components/post/Modal'
+import PropTypes from 'prop-types';
 
 const TIME_DELAY = 300;
 
 class GetVisiblePost extends React.Component {
+
+	static propTypes = {
+		clearPosts: PropTypes.func.isRequired,
+		loadPost: PropTypes.func.isRequired,
+		postEdit: PropTypes.func.isRequired,
+		postDelete: PropTypes.func.isRequired,
+		error: PropTypes.shape({
+			value: PropTypes.bool,
+			message: PropTypes.object,
+		}),
+		loading: PropTypes.shape({
+			value: PropTypes.bool
+		}),
+		posts: PropTypes.arrayOf(
+			PropTypes.shape({
+				text: PropTypes.string,
+				id: PropTypes.number,
+				isFetching: PropTypes.bool,
+				loading: PropTypes.bool
+			})
+		)
+	}
+
 	constructor() {
 		super(...arguments);
 
@@ -37,7 +61,6 @@ class GetVisiblePost extends React.Component {
 	}
 
 	render() {
-		const { posts, postDelete, postEdit } = this.props;
 		if (this.props.error.value)
 		{
 			return <h3> {`Error: ${this.props.error.message.message}. 
@@ -55,21 +78,21 @@ class GetVisiblePost extends React.Component {
 				{this.state.showModal &&
 				<ModalInput
 					modalChange={this.modalChange}
-					postEdit={postEdit}
-					text={posts[this.state.editableIndex].text}
-					id={posts[this.state.editableIndex].id}
+					postEdit={this.props.postEdit}
+					text={this.props.posts[this.state.editableIndex].text}
+					id={this.props.posts[this.state.editableIndex].id}
 				/> }
 				<ReactCSSTransitionGroup
 					transitionName="fade"
 					transitionEnterTimeout = {300}
 					transitionLeaveTimeout = {300}
 				>
-					{posts.map((post, index) =>
+					{this.props.posts.map((post, index) =>
 						<Post
 							key={post.id}
 							{...post}
 							index={index}
-							postDelete={postDelete}
+							postDelete={this.props.postDelete}
 							onSavePost={this.onSavePost}
 						/>
 					)}

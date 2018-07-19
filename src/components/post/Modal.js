@@ -1,8 +1,17 @@
 import React, {Component} from 'react'
 import {  FormGroup, Form, FormControl , Modal} from "react-bootstrap";
 import Button from 'react-bootstrap-button-loader';
+import PropTypes from 'prop-types';
 
 class ModalInput extends Component {
+
+	static propTypes = {
+		modalChange: PropTypes.func.isRequired,
+		postEdit: PropTypes.func.isRequired,
+		text: PropTypes.string.isRequired,
+		id: PropTypes.number.isRequired
+
+	}
 
 	handleSubmit = (e) => {
 		e.preventDefault();
@@ -14,7 +23,6 @@ class ModalInput extends Component {
 	}
 
 	render() {
-		const text = this.props.text;
 		return (
 			<div className="static-modal">
 				<Modal.Dialog>
@@ -26,7 +34,7 @@ class ModalInput extends Component {
 						className="justify-content-between"
 						onSubmit={this.handleSubmit}>
 							<FormGroup controlId="formEditTodo">
-								<FormControl defaultValue={text}
+								<FormControl defaultValue={this.props.text}
 									maxLength="20"
 									type="text"
 									inputRef={node => {

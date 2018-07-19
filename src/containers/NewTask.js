@@ -2,8 +2,13 @@ import React from 'react';
 import { postAdd } from '../action';
 import { connect } from 'react-redux'
 import { Button, FormGroup, Form, FormControl} from "react-bootstrap";
+import PropTypes from 'prop-types';
 
 class NewTask extends React.Component{
+
+	static propTypes = {
+		dispatch: PropTypes.func,
+	}
 
 	handleSubmit = (e) => {
 		e.preventDefault();

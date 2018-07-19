@@ -2,6 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Delay extends Component {
+
 	static propTypes = {
 		children: PropTypes.node,
 		wait: PropTypes.number,
